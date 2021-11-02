@@ -1,5 +1,5 @@
 {
-    "name": "@smfdnx/test-eslint-vue",
+    "name": "@smfdnx/eslint-config-vue-test",
     "version": "0.0.2",
     "description": "test npm",
     "license": "MIT",
