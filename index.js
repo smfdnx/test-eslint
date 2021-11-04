@@ -113,19 +113,108 @@ module.exports = {
         "import/no-extraneous-dependencies": 0,
 
 
-        // ======vue相关
+        // =========== vue相关
+        // 1. 建议添加
+        // html空格处理，4个空格
+        "vue/html-indent": ["error", 4],
+
+        // 2. TODOL
         // 不允许在computed中对依赖项重新赋值
-        "vue/no-side-effects-in-computed-properties": 0, // TODO: 有报错需要修复 "error"
-        // // html关闭标签不允许有空格
-        // "vue/html-closing-bracket-spacing": "error",
-        // // 使用双引号
-        // "vue/html-quotes": ["error", "double"],
+        "vue/no-side-effects-in-computed-properties": 0, // 有报错需要修复 "error"
+        // 多个属性换行展示 TODOL
+        "vue/max-attributes-per-line": ["error", {
+            "singleline": {
+                "max": 2 // 一行最多显示2个属性
+            }
+        }],
+        // 组件名驼峰使用 如：组件名component-one会报错，自动修复
+        "vue/component-name-in-template-casing": ["error", "PascalCase", {
+            "ignores": ["/^mt-/"], // 排除mintUI
+        }],
+        // 属性顺序 自动修复
+        "vue/attributes-order": ["error", {
+            order: [
+                'GLOBAL',
+                'CONDITIONALS',
+                'RENDER_MODIFIERS',
+                'SLOT',
+                'DEFINITION',
+                'TWO_WAY_BINDING',
+                'UNIQUE',
+                'TWO_WAY_BINDING',
+                'OTHER_ATTR',
+                'CONTENT',
+                'LIST_RENDERING',
+                'EVENTS',
+            ],
+        }],     
+        // 组件属性顺序 props\methids
+        "vue/order-in-components": [1, {
+            order: [
+                "el",
+                "name",
+                "mixins",
+                "extends",
+                "components",
+                ["provide", "inject"],
+                ["props", "propsData"],
+                "directives",
+                "filters",
+                "data",
+                "computed",
+                "watch",
+                "LIFECYCLE_HOOKS",
+                "methods",
+            ],
+        }],
+
+        // TODOL 下面一堆 不是很明白为什么报错，不加吧
+        // 组件的name不能和标签重名(禁止在组件定义中使用保留名称)
+        // "vue/no-reserved-component-names": "error", //
+        // 清理未使用的ref
+        // "vue/no-unused-refs": "error",
+        // // 不必要的模版字符串 {{'124'}}
+        // "vue/no-useless-mustaches": "error",
+        // // template/script中间有空格 TODOL
+        // "vue/padding-line-between-blocks": "error",
+        // $emit方法命名格式 on-close
+        // "vue/custom-event-name-casing": ["error", "kebab-case"],
+        
+        // 3. recommended 默认开启 一般是警告+自动修复
+        // html 标签右括号前不允许有空格，自关闭标签斜杠前必须有空格
+        "vue/html-closing-bracket-spacing": "error",
+        // 强制 HTML 属性的引号使用双引号
+        'vue/html-quotes': ['error', 'double'],
+        // 没有内容的元素强制使用自关闭标签
+        'vue/html-self-closing': 'error',
+        // 右括号前换行规则：属性换行则换行，属性不换行则不换行
+        "vue/html-closing-bracket-newline": "error",
+        // {{ a }}需要有空格
+        "vue/mustache-interpolation-spacing": "error",
+        // 属性之间不能有多个空格
+        "vue/no-multi-spaces": "error",
+        // 禁止属性中等号周围的空格
+        "vue/no-spaces-around-equal-signs-in-attribute": "error",
+        // props需要有默认值
+        "vue/require-default-prop": "error",
+        // props需要有类型
+        "vue/require-prop-types": "error",
+        // 使用:a不使用v-bind:a
+        "vue/v-bind-style": "error",
+        // 使用@click不使用v-on:click
+         "vue/v-on-style": "error",
+        // html中不能使用this
+        "vue/this-in-template": "error" // 无自动修复
+
+        
+        // 4. 不需要加，默认生效
+
+
+        // 5. 未处理
         // // 使用自关闭标签
         // "vue/html-self-closing": "error",
         // // 关闭标签单独在一行
         // "vue/html-closing-bracket-newline": "error",
-        // // html空格处理，4个空格
-        // "vue/html-indent": ["error", 4],
         // // 多个属性换行展示 TODOL
         // "vue/max-attributes-per-line": ["error", {
         //     "singleline": {
